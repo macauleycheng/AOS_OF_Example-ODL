@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<group xmlns="urn:opendaylight:flow:inventory">
+	<group-name>push-group-l2-interface</group-name>
+	<group-id>0xfffffffc</group-id>
+	<barrier>false</barrier>
+	<group-type>group-indirect</group-type>
+</group>
