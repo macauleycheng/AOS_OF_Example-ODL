@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <group xmlns="urn:opendaylight:flow:inventory">
-	<group-name>push-group-l2-interface</group-name>
-	<group-id>0x400000a</group-id>
+	<group-name>l2_flood_group_vlan_10</group-name>
+	<group-id>0x400a0001</group-id>
 	<barrier>false</barrier>
-	<group-type>group-indirect</group-type>
+	<group-type>group-all</group-type>
 	<buckets>
             <bucket>
 			<bucket-id>0</bucket-id>
