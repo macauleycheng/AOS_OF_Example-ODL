@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow>
+    <table_id>30</table_id>
+	<cookie_mask>0</cookie_mask>
+	<out_port>4294967295</out_port>
+	<out_group>4294967295</out_group>
+    <match>
+	</match>
+</flow>
