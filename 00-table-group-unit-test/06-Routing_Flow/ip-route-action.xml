@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="urn:opendaylight:flow:inventory">
+	<priority>200</priority>
+	<flow-name>ip-route-action</flow-name>
+	<table_id>30</table_id>
+	<id>1</id>
+	<match>
+		<ethernet-match>
+			<ethernet-type>
+				<type>2048</type>
+			</ethernet-type>
+		</ethernet-match>
+		<ipv4-destination>192.168.1.13/24</ipv4-destination>
+	</match>
+	<instructions>
+		<instruction>
+			<order>0</order>
+			<write-actions>
+				<action>
+					<order>0</order>
+					<group-action>
+						<group-id>1</group-id>
+					</group-action>
+				</action>
+			</write-actions>
+		</instruction>
+	</instructions>
+</flow>

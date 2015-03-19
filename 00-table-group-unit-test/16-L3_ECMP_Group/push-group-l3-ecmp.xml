@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<group xmlns="urn:opendaylight:flow:inventory">
+	<group-name>push-group-l3-ecmp</group-name>
+	<group-id>0x70000001</group-id>
+	<barrier>false</barrier>
+	<group-type>group-select</group-type>
+	<buckets>
+		<bucket>
+			<bucket-id>1</bucket-id>
+			<action>
+				<order>0</order>
+				<group-action>
+					<group-id>0x20000001</group-id>
+				</group-action>
+			</action>
+		</bucket>
+	</buckets>
+</group>

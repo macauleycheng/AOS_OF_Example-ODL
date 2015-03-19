@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<group xmlns="urn:opendaylight:flow:inventory">
+	<group-name>l2_mcast_group_vlan10</group-name>
+	<group-id>0x300a0001</group-id>
+	<barrier>false</barrier>
+	<group-type>group-all</group-type>
+	<buckets>
+            <bucket>
+			<bucket-id>0</bucket-id>
+			<action>
+                    <order>0</order>
+					<group-action>
+						<group-id>0xa0001</group-id>	
+					</group-action>
+			</action>
+			<action>			
+                    <order>1</order>			
+					<group-action>
+						<group-id>0xa0002</group-id>	
+					</group-action>	
+			</action>					
+		</bucket>
+	</buckets>
+</group>

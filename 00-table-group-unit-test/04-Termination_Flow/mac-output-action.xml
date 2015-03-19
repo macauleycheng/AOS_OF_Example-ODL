@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="urn:opendaylight:flow:inventory">
+	<priority>200</priority>
+	<flow-name>mac-goto-action</flow-name>
+	<table_id>20</table_id>
+	<id>1</id>
+	<match>
+		<ethernet-match>
+			<ethernet-type>
+				<type>2048</type>
+			</ethernet-type>
+			<ethernet-destination>
+				<address>00:00:04:22:44:66</address>
+			</ethernet-destination>
+		</ethernet-match>
+	</match>
+	<instructions>
+		<instruction>
+			<order>0</order>
+			<apply-actions>
+				<action>
+					<order>0</order>
+					<output-action>
+						<output-node-connector>CONTROLLER</output-node-connector>
+					</output-action>
+					<order>2</order>
+				</action>
+			</apply-actions>
+		</instruction>
+	</instructions>
+</flow>

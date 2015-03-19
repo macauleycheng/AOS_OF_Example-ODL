@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<group xmlns="urn:opendaylight:flow:inventory">
+	<group-name>push-group-l3-multicast</group-name>
+	<group-id>0x60020001</group-id>
+	<barrier>false</barrier>
+	<group-type>group-all</group-type>
+	<buckets>
+		<bucket>
+			<bucket-id>0</bucket-id>
+			<action>
+				<order>0</order>
+				<group-action>
+					<group-id>0x50000003</group-id>
+				</group-action>
+			</action>
+	</bucket>
+	<bucket>
+		<bucket-id>1</bucket-id>
+		<action>
+			<order>0</order>
+			<group-action>
+				<group-id>0x20001</group-id>
+			</group-action>
+		</action>
+	</bucket>
+	</buckets>
+</group>
