@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<group xmlns="urn:opendaylight:flow:inventory">
+	<group-name>rewrite_group_vlan_200_to_300</group-name>
+	<group-id>0x10000002</group-id>
+	<barrier>false</barrier>
+	<group-type>group-indirect</group-type>
+	<buckets>
+            <bucket>
+			<bucket-id>0</bucket-id>
+			<action>
+				<order>0</order>
+                <set-field>
+                    <vlan-match>
+			            <vlan-id>
+				            <vlan-id>300</vlan-id>
+			            </vlan-id>
+                    </vlan-match>
+                </set-field>
+			</action>            
+			<action>
+				<order>1</order>
+                <group-action>
+                    <group-id>0x12c0002</group-id>
+                </group-action>
+			</action>
+		</bucket>
+	</buckets>
+</group>

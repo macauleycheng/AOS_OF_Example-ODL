@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<group xmlns="urn:opendaylight:flow:inventory">
+	<group-name>push-group-l2-interface</group-name>
+	<group-id>0x12c0002</group-id>
+	<barrier>false</barrier>
+	<group-type>group-indirect</group-type>
+	<buckets>
+            <bucket>
+			<bucket-id>0</bucket-id>
+			<action>
+				<order>0</order>
+				<output-action>
+					<output-node-connector>2</output-node-connector>
+				</output-action>
+			</action>
+		</bucket>
+	</buckets>
+</group>

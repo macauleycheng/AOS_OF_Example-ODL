@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="urn:opendaylight:flow:inventory">
+	<priority>300</priority>
+	<flow-name>acl-action</flow-name>
+	<table_id>60</table_id>
+	<id>1</id>
+    <barrier>true</barrier>
+	<match>
+		<in-port>1</in-port>
+		<vlan-match>
+			<vlan-id>
+				<vlan-id>100</vlan-id>
+				<vlan-id-present>true</vlan-id-present>
+			</vlan-id>
+		</vlan-match>
+		<ethernet-match>
+			<ethernet-destination>
+				<address>00:00:00:00:00:10</address>
+			</ethernet-destination>
+		</ethernet-match>
+		<ipv4-destination>192.168.1.100/32</ipv4-destination>
+	</match>
+	<instructions>
+		<instruction>
+			<order>0</order>
+			<apply-actions>
+				<action>
+                    <order>0</order>
+                    <group-action>
+					    <group-id>0x640002</group-id>
+                    </group-action>
+				</action>
+			</apply-actions>
+		</instruction>
+	</instructions>
+</flow>
