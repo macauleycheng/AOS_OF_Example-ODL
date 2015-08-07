@@ -25,12 +25,12 @@ curl -v -H "Content-Type: application/xml" \
      http://$controller_ip:8181/restconf/config/opendaylight-inventory:nodes/node/$openflow_node/table/50
 
 #PUT L2 Interface Group
-echo "l2-interface-group_port2_vlan100_untag.xml"
+echo "l2-interface-group_port2_vlan200_untag.xml"
 curl -v -H "Content-Type: application/xml" \
      -H "Accept: application/xml" \
      -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -X PUT \
-     --data "@./l2-interface-group_port1_vlan100_untag.xml" \
+     --data "@./l2-interface-group_port1_vlan200_untag.xml" \
      http://$controller_ip:8181/restconf/config/opendaylight-inventory:nodes/node/$openflow_node/group/6553601
 
 echo "l2-interface-group_port2_vlan300_tag.xml"

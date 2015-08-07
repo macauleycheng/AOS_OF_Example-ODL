@@ -5,13 +5,13 @@
 	<priority>1</priority>
     <barrier>true</barrier>
     <idle-timeout>0</idle-timeout>
-	<flow-name>add_port1_allow_rx_tag_vid_100</flow-name>
+	<flow-name>add_port1_allow_rx_tag_vid_200</flow-name>
 	<match>
 	  <in-port>1</in-port>
 	  <vlan-match>
 	      <vlan-id>
 		      <vlan-id-present>true</vlan-id-present>
-			  <vlan-id>100</vlan-id>
+			  <vlan-id>200</vlan-id>
 		  </vlan-id>
 	  </vlan-match>
 	</match>
@@ -25,7 +25,7 @@
 	                    <vlan-match>
 	                        <vlan-id>
                                 <vlan-id-present>true</vlan-id-present>
-                                <vlan-id>100</vlan-id>
+                                <vlan-id>200</vlan-id>
                             </vlan-id>
                         </vlan-match>				
 				    </set-field>
