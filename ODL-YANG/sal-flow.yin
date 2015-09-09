@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="sal-flow"
+        xmlns="urn:ietf:params:xml:ns:yang:yin:1"
+        xmlns:flow="urn:opendaylight:flow:service"
+        xmlns:ext="urn:opendaylight:yang:extension:yang-ext"
+        xmlns:inv="urn:opendaylight:inventory"
+        xmlns:types="urn:opendaylight:flow:types"
+        xmlns:group-type="urn:opendaylight:group:types"
+        xmlns:meter-type="urn:opendaylight:meter:types"
+        xmlns:tr="urn:opendaylight:flow:transaction"
+        xmlns:error="urn:opendaylight:flow:errors">
+  <namespace uri="urn:opendaylight:flow:service"/>
+  <prefix value="flow"/>
+  <import module="yang-ext">
+    <prefix value="ext"/>
+    <revision-date date="2013-07-09"/>
+  </import>
+  <import module="opendaylight-inventory">
+    <prefix value="inv"/>
+    <revision-date date="2013-08-19"/>
+  </import>
+  <import module="opendaylight-flow-types">
+    <prefix value="types"/>
+    <revision-date date="2013-10-26"/>
+  </import>
+  <import module="opendaylight-group-types">
+    <prefix value="group-type"/>
+    <revision-date date="2013-10-18"/>
+  </import>
+  <import module="opendaylight-meter-types">
+    <prefix value="meter-type"/>
+    <revision-date date="2013-09-18"/>
+  </import>
+  <import module="flow-capable-transaction">
+    <prefix value="tr"/>
+    <revision-date date="2015-03-04"/>
+  </import>
+  <import module="flow-errors">
+    <prefix value="error"/>
+    <revision-date date="2013-11-16"/>
+  </import>
+  <description>
+    <text>Openflow flow management.</text>
+  </description>
+  <revision date="2013-08-19">
+    <description>
+      <text>Initial revision of flow service</text>
+    </description>
+  </revision>
+  <typedef name="flow-table-ref">
+    <description>
+      <text>Openflow table identifier</text>
+    </description>
+    <type name="instance-identifier"/>
+  </typedef>
+  <grouping name="node-flow-removed">
+    <description>
+      <text>Flow removed message structure.</text>
+    </description>
+    <leaf name="node">
+      <ext:context-reference context-type="inv:node-context"/>
+      <type name="inv:node-ref"/>
+    </leaf>
+    <leaf name="flow-table">
+      <type name="flow-table-ref"/>
+    </leaf>
+    <uses name="types:flow-mod-removed"/>
+  </grouping>
+  <grouping name="node-flow">
+    <description>
+      <text>Top openflow flow structure suitable for rpc input (contains node-context).</text>
+    </description>
+    <uses name="inv:node-context-ref"/>
+    <leaf name="flow-table">
+      <type name="flow-table-ref"/>
+    </leaf>
+    <uses name="types:flow"/>
+  </grouping>
+  <grouping name="base-node-error-notification">
+    <description>
+      <text>Openflow error message general structure.</text>
+    </description>
+    <status value="deprecated"/>
+    <leaf name="node">
+      <ext:context-reference context-type="inv:node-context"/>
+      <type name="inv:node-ref"/>
+    </leaf>
+  </grouping>
+  <grouping name="node-error-reference">
+    <description>
+      <text>Error message binding - to which source type the error belongs.</text>
+    </description>
+    <choice name="object-reference">
+      <case name="flow-ref">
+        <leaf name="flow-ref">
+          <type name="types:flow-ref"/>
+        </leaf>
+      </case>
+      <case name="group-ref">
+        <leaf name="group-ref">
+          <type name="group-type:group-ref"/>
+        </leaf>
+      </case>
+      <case name="meter-ref">
+        <leaf name="meter-ref">
+          <type name="meter-type:meter-ref"/>
+        </leaf>
+      </case>
+    </choice>
+  </grouping>
+  <grouping name="flow-update">
+    <description>
+      <text>DataStore aware flow update structure suitable for rpc input (contains node-context).</text>
+    </description>
+    <uses name="inv:node-context-ref"/>
+    <container name="original-flow">
+      <uses name="types:flow"/>
+    </container>
+    <container name="updated-flow">
+      <uses name="types:flow"/>
+    </container>
+  </grouping>
+  <rpc name="add-flow">
+    <description>
+      <text>Adding flow to openflow device.</text>
+    </description>
+    <input>
+      <uses name="tr:transaction-metadata"/>
+      <leaf name="flow-ref">
+        <type name="types:flow-ref"/>
+      </leaf>
+      <uses name="node-flow"/>
+    </input>
+    <output>
+      <uses name="tr:transaction-aware"/>
+    </output>
+  </rpc>
+  <rpc name="remove-flow">
+    <description>
+      <text>Removing flow from openflow device.</text>
+    </description>
+    <input>
+      <uses name="tr:transaction-metadata"/>
+      <leaf name="flow-ref">
+        <type name="types:flow-ref"/>
+      </leaf>
+      <uses name="node-flow"/>
+    </input>
+    <output>
+      <uses name="tr:transaction-aware"/>
+    </output>
+  </rpc>
+  <rpc name="update-flow">
+    <description>
+      <text>Updating flow on openflow device.</text>
+    </description>
+    <input>
+      <uses name="tr:transaction-metadata"/>
+      <leaf name="flow-ref">
+        <type name="types:flow-ref"/>
+      </leaf>
+      <uses name="flow-update"/>
+    </input>
+    <output>
+      <uses name="tr:transaction-aware"/>
+    </output>
+  </rpc>
+  <notification name="flow-added">
+    <status value="deprecated"/>
+    <uses name="tr:transaction-metadata"/>
+    <leaf name="flow-ref">
+      <type name="types:flow-ref"/>
+    </leaf>
+    <uses name="node-flow"/>
+    <uses name="tr:transaction-aware"/>
+  </notification>
+  <notification name="flow-updated">
+    <status value="deprecated"/>
+    <uses name="tr:transaction-metadata"/>
+    <leaf name="flow-ref">
+      <type name="types:flow-ref"/>
+    </leaf>
+    <uses name="node-flow"/>
+    <uses name="tr:transaction-aware"/>
+  </notification>
+  <notification name="flow-removed">
+    <status value="deprecated"/>
+    <uses name="tr:transaction-metadata"/>
+    <leaf name="flow-ref">
+      <type name="types:flow-ref"/>
+    </leaf>
+    <uses name="node-flow"/>
+    <uses name="tr:transaction-aware"/>
+  </notification>
+  <notification name="switch-flow-removed">
+    <status value="deprecated"/>
+    <uses name="node-flow-removed"/>
+  </notification>
+  <notification name="node-error-notification">
+    <status value="deprecated"/>
+    <uses name="error:error-message"/>
+    <uses name="tr:transaction-aware"/>
+    <uses name="tr:transaction-metadata"/>
+    <uses name="node-error-reference"/>
+    <uses name="base-node-error-notification"/>
+  </notification>
+  <notification name="node-experimenter-error-notification">
+    <status value="deprecated"/>
+    <uses name="error:experimenter-error-message"/>
+    <uses name="tr:transaction-aware"/>
+  </notification>
+</module>
