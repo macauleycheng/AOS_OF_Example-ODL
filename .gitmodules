@@ -1,0 +1,3 @@
+[submodule "odl-yang"]
+	path = odl-yang
+	url = https://github.com/YangModels/yang
