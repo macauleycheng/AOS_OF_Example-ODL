@@ -13,12 +13,15 @@
 					<group-id>0x20001</group-id>
 				</group-action>
 			</action>
+		</bucket>
+		<bucket>
+			<bucket-id>2</bucket-id>
 			<action>
-				<order>1</order>
+				<order>0</order>
 				<group-action>
 					<group-id>0x20003</group-id>
 				</group-action>
 			</action>
-		</bucket>
+		</bucket>		
 	</buckets>
 </group>
